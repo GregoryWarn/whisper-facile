@@ -12,7 +12,7 @@
         "Hint": "Se attivata, la finestra resta aperta dopo ogni invio e puoi chiuderla manualmente. Se disattivata, la finestra si chiude automaticamente dopo l'invio. Disattivata per default."
       }
     },
-    "ButtonHint": "Invia un sussurro a un giocatore connesso",
-    "ButtonAriaLabel": "Invia un sussurro"
+    "ButtonHint": "Invia Sussurro a Giocatore",
+    "ButtonAriaLabel": "Invia Sussurro"
   }
 }
