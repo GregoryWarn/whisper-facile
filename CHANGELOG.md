@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.2] - 2026-11-13
+## [1.2.1] - 2026-11-13
 
 - Ridotto il pulsante della Chat a un controllo compatto con la sola lettera **W**.
 - Rimossi icona e testo esteso dal pulsante; descrizione accessibile e tooltip restano disponibili.
@@ -8,7 +8,7 @@
 
 Le modifiche rilevanti al progetto sono registrate in questo file.
 
-## [1.1.1] - 2026-11-13
+## [1.2.0] - 2026-11-13
 
 - Corretto l'inserimento del pulsante nell'interfaccia Chat di Foundry VTT V14.
 - Il pulsante viene aggiunto alla barra dei controlli della Chat, vicino ai controlli di modalità del messaggio quando disponibili.
