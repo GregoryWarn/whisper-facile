@@ -1,0 +1,92 @@
+name: Build and publish Foundry module
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build package and publish release assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate and build module package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          SOURCE_VERSION="$(jq -r '.version' module.json)"
+
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Tag '$TAG' non valido. Usa il formato vMAJOR.MINOR.PATCH, ad esempio v1.1.1."
+            exit 1
+          fi
+
+          if [[ "$SOURCE_VERSION" != "$VERSION" ]]; then
+            echo "::error::La versione in module.json ($SOURCE_VERSION) non coincide con il tag ($VERSION)."
+            exit 1
+          fi
+
+          node --check scripts/main.js
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          for filename in ("module.json", "lang/it.json"):
+              with Path(filename).open(encoding="utf-8") as stream:
+                  json.load(stream)
+
+          manifest = json.loads(Path("module.json").read_text(encoding="utf-8"))
+          if manifest.get("id") != "whisper-facile":
+              raise SystemExit("L'ID in module.json deve essere 'whisper-facile'.")
+          PY
+
+          REPOSITORY_URL="https://github.com/${GITHUB_REPOSITORY}"
+          LATEST_MANIFEST="${REPOSITORY_URL}/releases/latest/download/module.json"
+          DOWNLOAD_URL="${REPOSITORY_URL}/releases/download/${TAG}/whisper-facile.zip"
+
+          mkdir -p dist/whisper-facile
+          jq \
+            --arg repository "$REPOSITORY_URL" \
+            --arg manifest "$LATEST_MANIFEST" \
+            --arg download "$DOWNLOAD_URL" \
+            '.url = $repository
+             | .manifest = $manifest
+             | .download = $download' \
+            module.json > dist/module.json
+
+          cp dist/module.json dist/whisper-facile/module.json
+          cp -R scripts styles lang dist/whisper-facile/
+          cp README.md CHANGELOG.md dist/whisper-facile/
+
+          (
+            cd dist
+            zip -qr whisper-facile.zip whisper-facile
+          )
+
+          echo "### Pacchetto creato" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Versione: \`$VERSION\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Manifest e ZIP pronti per la release." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Attach manifest and module ZIP to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Whisper Facile ${{ github.ref_name }}
+          generate_release_notes: true
+          overwrite_files: true
+          fail_on_unmatched_files: true
+          files: |
+            dist/module.json
+            dist/whisper-facile.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
