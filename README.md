@@ -1,10 +1,6 @@
 # Whisper Facile
 
-Modulo per [Foundry Virtual Tabletop](https://foundryvtt.com/) che consente al GM di inviare Whisper ai giocatori connessi tramite una finestra dedicata, senza digitare comandi nella chat.
-
-**Versione:** 1.1.0  
-**Foundry VTT minimo dichiarato:** 14.370  
-**ID del modulo:** `whisper-facile`
+Modulo per [Foundry Virtual Tabletop](https://foundryvtt.com/) che consente di inviare Whisper ai giocatori connessi tramite una finestra dedicata, senza digitare comandi nella chat.
 
 ## Funzionalità
 
