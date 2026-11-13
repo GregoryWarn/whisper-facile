@@ -1,0 +1,13 @@
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Pacchetti di build locali
+dist/
+*.zip
+
+# File temporanei
+*.log
+*.tmp
