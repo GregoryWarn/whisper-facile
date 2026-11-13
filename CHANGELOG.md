@@ -2,6 +2,13 @@
 
 Le modifiche rilevanti al progetto sono registrate in questo file.
 
+## [1.1.1] - 2026-11-13
+
+- Corretto l'inserimento del pulsante nell'interfaccia Chat di Foundry VTT V14.
+- Il pulsante viene aggiunto alla barra dei controlli della Chat, vicino ai controlli di modalità del messaggio quando disponibili.
+- Aggiornato l'hook di rendering per ApplicationV2.
+- Corretto il tipo Boolean dell'impostazione client.
+
 ## [1.1.0] - 2026-11-13
 
 - Aggiunta l'impostazione per mantenere aperta la finestra Whisper dopo l'invio.
