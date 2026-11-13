@@ -1,0 +1,29 @@
+{
+  "id": "whisper-facile",
+  "title": "Whisper Facile",
+  "description": "Aggiunge alla chat un pulsante per inviare sussurri ai giocatori connessi.",
+  "version": "1.1.0",
+  "authors": [
+    {
+      "name": "Whisper Facile"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14.370"
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/main.css"
+  ],
+  "languages": [
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json"
+    }
+  ],
+  "readme": "README.md",
+  "changelog": "CHANGELOG.md"
+}
