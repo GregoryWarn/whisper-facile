@@ -79,8 +79,8 @@ function insertWhisperButton(application, renderedElement) {
   button.className = "control-button whisper-facile-button";
   button.dataset.whisperFacileButton = "true";
   button.title = localize("WHISPER_FACILE.ButtonHint", "Invia un sussurro a un giocatore connesso");
-  button.setAttribute("aria-label", localize("WHISPER_FACILE.Button", "Whisper"));
-  button.innerHTML = '<i class="fas fa-user-secret" aria-hidden="true"></i><span>Whisper</span>';
+  button.setAttribute("aria-label", localize("WHISPER_FACILE.ButtonAriaLabel", "Invia un sussurro"));
+  button.textContent = "W";
   button.addEventListener("click", openWhisperDialog);
 
   if (insertAfter?.parentElement === host) {
