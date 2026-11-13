@@ -1,12 +1,21 @@
+/* Pulsante inserito nella barra dei controlli della Chat (Foundry V14). */
 .whisper-facile-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
+  flex: 0 0 auto;
   width: auto;
-  margin: 0.2rem 0.45rem;
-  padding: 0.25rem 0.6rem;
+  min-width: max-content;
+  margin: 0.15rem 0.35rem;
+  padding: 0.3rem 0.55rem;
   white-space: nowrap;
   cursor: pointer;
+  line-height: 1.2;
+}
+
+.whisper-facile-button i {
+  pointer-events: none;
 }
 
 .whisper-facile-overlay {
