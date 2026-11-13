@@ -1,10 +1,10 @@
 {
   "WHISPER_FACILE": {
     "Button": "Whisper",
-    "Title": "Invia un Whisper",
-    "Player": "Giocatore connesso",
+    "Title": "Sussurra",
+    "Player": "Giocatore",
     "Message": "Messaggio",
-    "Send": "Invia Whisper",
+    "Send": "Invia",
     "Cancel": "Chiudi",
     "Settings": {
       "KeepWindowOpen": {
