@@ -1,0 +1,16 @@
+{
+  "WHISPER_FACILE": {
+    "Button": "Whisper",
+    "Title": "Invia un Whisper",
+    "Player": "Giocatore connesso",
+    "Message": "Messaggio",
+    "Send": "Invia Whisper",
+    "Cancel": "Chiudi",
+    "Settings": {
+      "KeepWindowOpen": {
+        "Name": "Mantieni aperta la finestra Whisper dopo l'invio",
+        "Hint": "Se attivata, la finestra resta aperta dopo ogni invio e puoi chiuderla manualmente. Se disattivata, la finestra si chiude automaticamente dopo l'invio. Disattivata per default."
+      }
+    }
+  }
+}
